@@ -1,0 +1,39 @@
+---
+name: "simple github-action-workflow script"
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: "running date cmd"
+        run: date
+
+      - name: "getting OS details"
+        run: cat /etc/os-release
+
+      - name: "current working directory and its contents before packer"
+        run: |
+
+          pwd
+          ls -l
+
+      - name: "installing packer"
+        run: |
+
+          wget https://releases.hashicorp.com/packer/1.15.1/packer_1.15.1_linux_amd64.zip
+          unzip packer_1.15.1_linux_amd64.zip
+
+
+      - name: "current working directory and its contents after packer"
+        run: |
+
+          pwd
+          ls -l
